@@ -1,0 +1,253 @@
+:root {
+    --primary-color: #4CAF50;
+    --secondary-color: #FF9800;
+    --dark-bg: #1a1a1a;
+    --dark-secondary: #2d2d2d;
+    --light-bg: #ffffff;
+    --light-secondary: #f5f5f5;
+    --text-light: #ffffff;
+    --text-dark: #333333;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Cairo', sans-serif;
+}
+
+body {
+    background-color: var(--light-bg);
+    color: var(--text-dark);
+    transition: background-color 0.3s, color 0.3s;
+}
+
+body.dark-mode {
+    background-color: var(--dark-bg);
+    color: var(--text-light);
+}
+
+/* شاشة التحميل */
+.loading-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--dark-bg);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    animation: fadeOut 0.5s ease-in-out 2s forwards;
+}
+
+.logo-container {
+    animation: scaleLogo 2s ease-in-out;
+}
+
+@keyframes fadeOut {
+    to {
+        opacity: 0;
+        visibility: hidden;
+    }
+}
+
+@keyframes scaleLogo {
+    0% { transform: scale(0.5); opacity: 0; }
+    50% { transform: scale(1.2); opacity: 1; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+/* الحاوية الرئيسية */
+.chat-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* رأس الصفحة */
+.chat-header {
+    background-color: var(--primary-color);
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.header-content {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.header-logo {
+    height: 40px;
+    width: auto;
+}
+
+.theme-toggle {
+    background: none;
+    border: none;
+    color: var(--text-light);
+    cursor: pointer;
+    font-size: 1.5rem;
+    padding: 0.5rem;
+    transition: transform 0.3s;
+}
+
+.theme-toggle:hover {
+    transform: rotate(180deg);
+}
+
+/* منطقة المحادثة */
+.chat-messages {
+    flex: 1;
+    overflow-y: auto;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.message {
+    max-width: 70%;
+    padding: 1rem;
+    border-radius: 1rem;
+    animation: messageAppear 0.3s ease-out;
+}
+
+.user-message {
+    background-color: var(--primary-color);
+    color: var(--text-light);
+    align-self: flex-end;
+    border-bottom-right-radius: 0.3rem;
+}
+
+.bot-message {
+    background-color: var(--dark-mode) ? var(--dark-secondary) : var(--light-secondary);
+    align-self: flex-start;
+    border-bottom-left-radius: 0.3rem;
+}
+
+@keyframes messageAppear {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* منطقة الإدخال */
+.chat-input-container {
+    padding: 1rem;
+    background-color: var(--dark-mode) ? var(--dark-secondary) : var(--light-secondary);
+}
+
+.suggestions {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+    overflow-x: auto;
+    padding-bottom: 0.5rem;
+}
+
+.suggestion-btn {
+    background-color: var(--primary-color);
+    color: var(--text-light);
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 1rem;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: transform 0.2s;
+}
+
+.suggestion-btn:hover {
+    transform: scale(1.05);
+}
+
+.input-group {
+    display: flex;
+    gap: 1rem;
+}
+
+#user-input {
+    flex: 1;
+    padding: 1rem;
+    border: 2px solid var(--primary-color);
+    border-radius: 1rem;
+    resize: none;
+    background-color: var(--dark-mode) ? var(--dark-bg) : var(--light-bg);
+    color: inherit;
+}
+
+.send-button {
+    background-color: var(--primary-color);
+    color: var(--text-light);
+    border: none;
+    padding: 0 1.5rem;
+    border-radius: 1rem;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.send-button:hover {
+    transform: scale(1.1);
+}
+
+/* تذييل الصفحة */
+.chat-footer {
+    padding: 1rem;
+    text-align: center;
+    font-size: 0.8rem;
+    color: #666;
+    background-color: var(--dark-mode) ? var(--dark-secondary) : var(--light-secondary);
+}
+
+/* التصميم المتجاوب */
+@media (max-width: 768px) {
+    .message {
+        max-width: 85%;
+    }
+
+    .suggestions {
+        flex-wrap: nowrap;
+    }
+
+    .chat-header h1 {
+        font-size: 1.2rem;
+    }
+}
+
+/* تأثيرات إضافية */
+.typing-indicator {
+    display: flex;
+    gap: 0.3rem;
+    padding: 1rem;
+    background-color: var(--dark-mode) ? var(--dark-secondary) : var(--light-secondary);
+    border-radius: 1rem;
+    width: fit-content;
+}
+
+.typing-dot {
+    width: 8px;
+    height: 8px;
+    background-color: var(--primary-color);
+    border-radius: 50%;
+    animation: typingAnimation 1s infinite;
+}
+
+.typing-dot:nth-child(2) { animation-delay: 0.2s; }
+.typing-dot:nth-child(3) { animation-delay: 0.4s; }
+
+@keyframes typingAnimation {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+}

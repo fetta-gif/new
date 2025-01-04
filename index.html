@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Media AI - الإقامة الجامعية شنتوف محمد</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body class="dark-mode">
+    <!-- شاشة التحميل -->
+    <div class="loading-screen">
+        <div class="logo-container">
+            <img src="logo.png" alt="شعار الإقامة الجامعية شنتوف محمد" class="logo">
+        </div>
+    </div>
+
+    <!-- الواجهة الرئيسية -->
+    <div class="chat-container">
+        <!-- رأس الصفحة -->
+        <header class="chat-header">
+            <div class="header-content">
+                <img src="logo.png" alt="شعار Media AI" class="header-logo">
+                <h1>Media AI</h1>
+            </div>
+            <button id="theme-toggle" class="theme-toggle">
+                <i class="fas fa-sun"></i>
+            </button>
+        </header>
+
+        <!-- منطقة المحادثة -->
+        <div class="chat-messages" id="chat-messages">
+            <!-- ستتم إضافة الرسائل هنا ديناميكياً -->
+        </div>
+
+        <!-- منطقة الكتابة -->
+        <div class="chat-input-container">
+            <div class="suggestions">
+                <button class="suggestion-btn">كيف يمكنني التسجيل في السكن؟</button>
+                <button class="suggestion-btn">ما هي شروط الإقامة؟</button>
+                <button class="suggestion-btn">متى يبدأ التسجيل؟</button>
+            </div>
+            <div class="input-group">
+                <textarea id="user-input" placeholder="اكتب رسالتك هنا..." rows="1"></textarea>
+                <button id="send-button" class="send-button">
+                    <i class="fas fa-paper-plane"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- تذييل الصفحة -->
+        <footer class="chat-footer">
+            <p>هذا النموذج تجريبي قيد التطوير </p>
+            
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
